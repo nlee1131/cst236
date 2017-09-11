@@ -2,8 +2,6 @@
 //save form data
 require_once "Database.php";
 
-function register()
-{
 
     $firstName = $_POST["firstName"];
     $lastName = $_POST["lastName"];
@@ -25,9 +23,10 @@ function register()
     }
 
 $db = new Database();
-    if($db->insert())
-        echo "Registration successful";
+    if($db->insert($firstName, $lastName, $email, $password))
+        echo "";
+    else echo "Error";
 
-}
+
 ?>
 <a href="index.php">Home</a>

@@ -7,8 +7,8 @@
  */
 require_once "Database.php";
 
-private $email = $_POST["email"];
-private $password = $_POST["password"];
+$email = $_POST["email"];
+$password = $_POST["password"];
 
 //validate data
 if($email == NULL || trim($email) == "")
@@ -22,6 +22,11 @@ elseif($password == NULL || trim($password) == "")
 
 else {
     $db = new Database();
-    $db->checkCredentials();
+    if($db->checkCredentials($email, $password))
+    {
+        //echo "Login successful";
+    }
+    else echo "false";
 }
 ?>
+<a href="index.php">Home</a>

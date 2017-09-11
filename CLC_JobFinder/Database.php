@@ -15,9 +15,9 @@ class Database
     private $dbname;
     private $conn;
 
-    public function __construct($dbservername, $dbusername, $dbpassword, $dbname)
+    public function __construct()
     {
-        $this->dbservername = "localhost";
+        $this->dbservername = "204.152.255.27";
         $this->dbusername = "nleebhos_400IM";
         $this->dbpassword = "legoman27";
         $this->dbname = "nleebhos_JobFinder";
@@ -35,32 +35,38 @@ class Database
     {
 
         $sql = "INSERT INTO users (FIRSTNAME, LASTNAME, EMAIL, PASSWORD)
-VALUES ('" . $firstName . "' , '" . $lastName . "' , '" . $email . "' , '" . $password . "')";
-        if ($this->conn->query($sql) === TRUE) {
+                VALUES ('" . $firstName . "' , '" . $lastName . "' , '" . $email . "' , '" . $password . "')";
+        if ($this->conn->query($sql) == TRUE) {
             echo "You are now registered.";
+            return true;
         } else {
-            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
         }
 
-        $this->conn->close();
+
     }
 
     public function checkCredentials($email, $password)
     {
 
         $sql = "SELECT ID, EMAIL, PASSWORD
-        FROM users WHERE " . " BINARY USERNAME='" . $email . "' AND " . " BINARY PASSWORD='" . $password . "'";
+                FROM users WHERE " . " BINARY EMAIL='" . $email . "' AND " . " BINARY PASSWORD='" . $password . "'";
         $result = $this->conn->query($sql);
         if ($this->conn->error) {
             echo "Connection failed";
+            return false;
         } elseif ($result->num_rows == 1) {
             echo "Login Successful";
+            return true;
         } elseif ($result->num_rows == 0) {
             echo "User does not exist";
+            return false;
         } elseif ($result->num_rows > 1) {
             echo "More than one user registered";
+            return false;
         } else {
             echo "Login failed";
+            return false;
         }
     }
 
