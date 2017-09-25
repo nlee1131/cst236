@@ -5,6 +5,7 @@
  * Date: 9/10/17
  * Time: 4:22 PM
  */
+include "_header.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="../CSS/pageStyle.css">
 </head>
 <body align="center" bgcolor="#f0f8ff">
 <form action="loginHandler.php" method="post">
@@ -22,10 +24,6 @@
     <input name="login" type="submit">
 </form>
 <br>
-<br>
-<a href="index.php">Main Menu</a>
+
 </body>
 </html>
-
-<?php
-?>
