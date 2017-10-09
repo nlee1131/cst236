@@ -33,9 +33,9 @@ class Database
 
 
 
-    public function insertIntoUser($firstName, $lastName, $email, $password)
+    public function createUser($firstName, $lastName, $email, $password)
     {
-        $sql = "INSERT INTO users (FIRSTNAME, LASTNAME, EMAIL, PASSWORD)
+        $sql = "INSERT INTO JOBS (FIRSTNAME, LASTNAME, EMAIL, PASSWORD)
                 VALUES ('" . $firstName . "' , '" . $lastName . "' , '" . $email . "' , '" . $password . "')";
         if ($this->conn->query($sql) == TRUE) {
             //echo "You are now registered.";
@@ -70,14 +70,24 @@ class Database
     }
 
     public function getJobs(){
-        $sql = "SELECT JOB_ID, JOB_NAME FROM jobs";
+        $sql = "SELECT JOB_ID, JOB_NAME FROM JOBS";
         $result = $this->conn->query($sql);
 
     }
 
-    public function insertIntoJobs($jobName, $jobDescription){
-        $sql = "INSERT INTO jobs (JOB_NAME, JOB_DESC)
-                VALUES ('" . $jobName . "' , '" . $jobDescription . "')";
+    public function createJob($jobName, $jobDescription, $jobImage){
+        $sql = "INSERT INTO JOBS (JOB_NAME, JOB_DESC, JOB_IMAGE)
+                VALUES ('" . $jobName . "' , '" . $jobDescription . "' , '" . $jobImage . "')";
+        if ($this->conn->query($sql) == TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function enterCreditCard($ccNumber, $cHName, $csv, $exMonth, $exYear){
+        $sql = "INSERT INTO CREDIT_CARD (CARD_NUM, CARD_HOLDER_NAME, CSV, EXPIRATION_MONTH, EXPIRATION_YEAR)
+                VALUES ('" . $ccNumber . "' , '" . $cHName . "' , '" . $csv . "' , '" . $exMonth . "' , '" . $exYear . "')";
         if ($this->conn->query($sql) == TRUE) {
             //echo "You are now registered.";
             return true;
