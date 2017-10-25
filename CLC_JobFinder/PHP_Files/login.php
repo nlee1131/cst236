@@ -18,9 +18,9 @@ include "_header.php";
 <body align="center" bgcolor="#f0f8ff">
 <form action="loginHandler.php" method="post">
     Email:<br>
-    <input name="email" type="text"><br>
+    <input name="email" type="text" required/><br>
     Password:<br>
-    <input name="password" type="password"><br>
+    <input name="password" type="password" required/><br>
     <input name="login" type="submit">
 </form>
 <br>

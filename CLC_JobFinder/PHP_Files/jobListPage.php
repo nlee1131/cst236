@@ -7,6 +7,8 @@
  */
 include "_header.php";
 require_once "_autoloader.php";
+
+$job = new Utilities();
 ?>
 
 <!DOCTYPE html>
@@ -19,44 +21,14 @@ require_once "_autoloader.php";
 </head>
 <body>
 
-<!--
+
 <?php
 
-//$job->listJobs();
+$job->listJobs();
 ?>
--->
 
 
-<button class="accordion"><a href="jobDescription.php?id=<?=$row["ID"]?>"><?=$row["JOB_NAME"]?></a>Job 1</button>
-<div class="Job 1">
-    <p>
-        Hello world, I am the first job!
-    </p>
-</div>
 
-<button class="accordion">Job 2</button>
-<div class="Job 2">
-    <p>
-        Hello world, I am the second job!
-    </p>
-</div>
-
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight){
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        }
-    }
-</script>
 
 
 </body>

@@ -35,12 +35,13 @@ class Database
 
     public function createUser($firstName, $lastName, $email, $password)
     {
-        $sql = "INSERT INTO JOBS (FIRSTNAME, LASTNAME, EMAIL, PASSWORD)
+        $sql = "INSERT INTO USERS (FIRSTNAME, LASTNAME, EMAIL, PASSWORD)
                 VALUES ('" . $firstName . "' , '" . $lastName . "' , '" . $email . "' , '" . $password . "')";
         if ($this->conn->query($sql) == TRUE) {
             //echo "You are now registered.";
             return true;
         } else {
+            echo "Error entering user info";
             return false;
         }
     }
@@ -70,9 +71,21 @@ class Database
     }
 
     public function getJobs(){
-        $sql = "SELECT JOB_ID, JOB_NAME FROM JOBS";
+        $sql = "SELECT * FROM JOBS";
         $result = $this->conn->query($sql);
-
+        $jobs = array();
+        $index = 0;
+        while($row = $result->fetch_assoc()){
+            $id = $row["JOB_ID"];
+            $name = $row["JOB_NAME"];
+            $description = $row["JOB_DESCRIPTION"];
+            $image = $row["JOB_IMAGE"];
+            $job = new Job($id, $name, $description, $image);
+            $jobs[$index] = $job;
+            $index++;
+        }
+        $this->conn->close();
+        return $jobs;
     }
 
     public function createJob($jobName, $jobDescription, $jobImage){
@@ -92,38 +105,22 @@ class Database
             //echo "You are now registered.";
             return true;
         } else {
+            //echo "Error entering cc info";
             return false;
         }
     }
 
-
-    public function registerValidation($firstName, $lastName, $email, $password)
-    {
-        if ($firstName == NULL || trim($firstName) == "") {
-            exit("First name is required");
+    public function getJobById($id){
+        $sql = "SELECT * FROM JOBS WHERE JOB_ID=" . $id ;
+        $result = $this->conn->query($sql);
+        if($result->num_rows==1){
+            $row = $result->fetch_assoc();
+            $job = new Job($row["JOB_ID"], $row["JOB_NAME"], $row["JOB_DESCRIPTION"], $row["JOB_IMAGE"]);
+            $this->conn->close();
+            return $job;
         }
-        elseif ($lastName == NULL || trim($lastName) == "") {
-            exit("Last name is required");
-        }
-        elseif($email == NULL || trim($email) == ""){
-            exit("Email is required");
-        }
-        elseif($password == NULL || trim($password) == ""){
-            exit("Password is required");
-        }
+        $this->conn->close();
+        return null;
     }
-
-    public function loginValidation($email, $password)
-    {
-        if($email == NULL || trim($email) == ""){
-             exit("Email is required");
-        }
-        elseif($password == NULL || trim($password) == ""){
-                exit("Password is required");
-        }
-    }
-
-
-
 
 }

@@ -5,6 +5,7 @@
  * Date: 9/24/17
  * Time: 8:32 PM
  */
+session_start();
 require_once "_autoloader.php";
 
     $jobName = $_POST["jobName"];

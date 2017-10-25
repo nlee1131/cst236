@@ -5,7 +5,7 @@
  * Date: 9/10/17
  * Time: 4:28 PM
  */
-
+session_start();
 require_once "_autoloader.php";
 
 $email = $_POST["email"];
@@ -29,6 +29,7 @@ else {
     {
         $message= "Login Successful";
         include "_error.php";
+        $_SESSION["principle"] = true;
     }
     else {
         $message="Login Failed";

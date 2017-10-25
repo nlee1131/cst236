@@ -6,6 +6,7 @@
  * Time: 4:21 PM
  */
 include "_header.php";
+$ipaddress = $_SERVER["REMOTE_ADDR"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +17,7 @@ include "_header.php";
 </head>
 <body align="center" bgcolor="#f0f8ff">
 <h1>Welcome to Job Finder!</h1>
+<h6>Welcome IP user: <?php echo $ipaddress ?></h6>
 </body>
 </html>
 

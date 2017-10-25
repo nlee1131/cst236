@@ -7,6 +7,8 @@
  */
 
 include "_header.php";
+require_once "_autoloader.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +22,11 @@ include "_header.php";
 
 <form action="jobSubmissionHandler.php" method="POST">
     Job Name:<br>
-    <input type="text" name="jobName" required/><br>
+    <input type="text" name="jobName" required minlength="5" maxlength="45"/><br>
     Description:<br>
     <textarea name="jobDescription" rows="5" cols="100" minlength="10" maxlength="1000" required></textarea><br>
     Image url:<br>
-    <input type="url" name="imageSource" required/><br>
+    <input type="url" name="imageSource" required maxlength="500"/><br>
     <input type="submit" name="submit"/><br>
 </form>
 <br>

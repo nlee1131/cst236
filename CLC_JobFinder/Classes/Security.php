@@ -14,6 +14,7 @@ class Security
     private $db;
 
 
+
     public function __construct($email, $password)
     {
         $this->email=$email;
@@ -27,4 +28,6 @@ class Security
         $this->db->checkCredentials($email, $password);
         return true;
     }
+
+
 }

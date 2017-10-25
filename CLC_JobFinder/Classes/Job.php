@@ -1,5 +1,5 @@
 <?php
-include "Database.php";
+require_once "Database.php";
 /**
  * Created by PhpStorm.
  * User: natelee
@@ -8,10 +8,77 @@ include "Database.php";
  */
 class Job
 {
+    private $id;
     private $name;
     private $description;
-    private $contact;
-    private $db;
+    private $image;
+
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+
 
     /**
      * Job constructor.
@@ -19,43 +86,15 @@ class Job
      * @param $description
      * @param $contact
      */
-    public function __construct($name, $description, $contact)
+    public function __construct($id, $name, $description, $image)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->description = $description;
-        $this->contact = $contact;
-        $this->db = new Database();
+        $this->image = $image;
+
     }
 
-
-    public function listJobs()
-    {
-        ?>
-
-        <table>
-
-
-            <?php
-            //$sql = "SELECT JOB_ID, JOB_NAME FROM jobs";
-            //$result = $this->db->query($sql);
-            $this->db->getJobs();
-            $result = $this->db->getJobs();
-            while($row = $result->fetch_assoc()){
-                ?>
-                <tr>
-                    <td>
-                        <a href="../PHP_Files/jobDescription.php?id=<?=$row["ID"]?>"><?=$row["JOB_NAME"]?></a>
-                    </td>
-                </tr>
-                <?php
-            }
-            //$this->db->close();
-            ?>
-
-
-        </table>
-        <?php
-    }
 
 
 }
