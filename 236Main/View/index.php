@@ -11,7 +11,7 @@ include '_header.php';
 	<div align="center">
 		<h1>Welcome</h1>
 		<br>
-		<h3>Please login, or if you are visiting or the first time register.</h3>
+		<h3>Please login, or if you are visiting for the first time, please register.</h3>
 	</div>
 </body>
 </html>

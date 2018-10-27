@@ -15,37 +15,33 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 $age = $_POST["age"];
 
-$u = new User(0, $firstName, $lastName, $email, $username, $password, $age);
+$hashed = password_hash($password, PASSWORD_DEFAULT);
+
+$u = new User(0, $firstName, $lastName, $email, $username, $hashed, $age);
 
 if($firstName == NULL || trim($firstName) == "")
 {
-    $message = "First name required";
-    include "_error.php";
+    include "../View/_error.php";
 }
 elseif($lastName == NULL || trim($lastName) == "")
 {
-    $message = "Last name required";
-    include "_error.php";
+    include "../View/_error.php";
 }
 elseif($email == NULL || trim($email) == "")
 {
-    $message = "Email required";
-    include "_error.php";
+    include "../View/_error.php";
 }
 elseif($username == NULL || trim($username) == "")
 {
-    $message = "Username required";
-    include "_error.php";
+    include "../View/_error.php";
 }
 elseif($password == NULL || trim($password) == "")
 {
-    $message = "Password required";
-    include "_error.php";
+    include "../View/_error.php";
 }
 elseif($age == NULL || trim($age) == "")
 {
-    $message = "Age required";
-    include "_error.php";
+    include "../View/_error.php";
 }
 else 
 {

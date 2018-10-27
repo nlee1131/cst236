@@ -20,7 +20,7 @@ error_reporting(E_ALL);
 
 class UserBusinessService
 {
-    function login(User $u) {
+    public function login(User $u) {
         $service = new UserDataService();
         
         if($service->readUser($u))

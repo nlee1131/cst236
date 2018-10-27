@@ -16,6 +16,8 @@ include '_header.php';
     <link rel="stylesheet" href="../assets/css/Pretty-Table-1.css">
     <link rel="stylesheet" href="../assets/css/Pretty-Table.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    
 </head>
 
 <body>
@@ -28,21 +30,18 @@ include '_header.php';
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>Tiger Nixon</td>
-				<td>System Architect</td>
-				<td>$320,800</td>
-			</tr>
-			<tr>
-				<td>Garrett Winters</td>
-				<td>Accountant</td>
-				<td>$170,750</td>
-			</tr>
-			<tr>
-				<td>Ashton Cox</td>
-				<td>Junior Technical Author</td>
-				<td>$86,000</td>
-			</tr>
+			<?php 
+			for($i = 0; $i < count($products); $i++)
+			{
+			    ?>
+			    <tr>
+    			    <td><?php echo $products[$i]->getName();?></td>
+    			    <td><?php echo $products[$i]->getDescription();?></td>
+    			    <td><?php echo "$" . $products[$i]->getPrice();?></td>
+			    </tr>
+			    <?php 
+			}
+			?>
 		</tbody>
 	</table>
 	<script src="../assets/js/jquery.min.js"></script>
@@ -50,6 +49,12 @@ include '_header.php';
 	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 	<script src="../assets/js/Dynamic-Table.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+	<script type="text/javascript">
+    	$(document).ready( function () {
+    	    $('#example').DataTable();
+    	} );
+	</script>
 </body>
 
 </html>

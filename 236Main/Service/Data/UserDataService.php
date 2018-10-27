@@ -19,33 +19,7 @@ error_reporting(E_ALL);
 
 class UserDataService
 {
-//     public function checkCredentials(User $u)
-//     {
-//         $db = new \Database();
-        
-//         if($db->readUser($u))
-//         {
-//             return true;
-//         }
-//         else 
-//         {
-//             return false;
-//         }
-//     }
-    
-//     public function registerUser(User $u)
-//     {
-//         $db = new \Database();
-        
-//         if($db->createUser($u))
-//         {
-//             return true;
-//         }
-//         else 
-//         {
-//             return false;
-//         }
-//     }
+
     public function createUser(User $u)
     {
         $db = new Database();
@@ -85,7 +59,7 @@ class UserDataService
     {
         $db = new Database();
         
-        $sql_query = "SELECT ID, USERNAME, PASSWORD FROM USER WHERE USERNAME = ? AND PASSWORD = ?";
+        $sql_query = "SELECT ID, USERNAME, PASSWORD FROM USER WHERE USERNAME = ?";
         
         $stmt = $db->getConn()->prepare($sql_query);
         
@@ -98,18 +72,26 @@ class UserDataService
         $us = $u->getUsername();
         $p = $u->getPassword();
         
-        $stmt->bind_param("ss", $us, $p);
+        $stmt->bind_param("s", $us);
         
         $stmt->execute();
         
         $stmt->store_result();
         
+        $stmt->bind_result($col1, $col2, $col3);
+        
+        $stmt->fetch();
+        
         if ($db->getConn()->error) {
             //echo "Connection failed";
             return false;
         } elseif ($stmt->affected_rows == 1) {
+            if(password_verify($p, $col3)){
+                $_SESSION["userID"] = $col1;
+                //echo $_SESSION["userID"];
             //echo "Login Successful";
-            return true;
+                return true;
+            }
         } elseif ($stmt->affected_rows == 0) {
             //echo "User does not exist";
             return false;
@@ -121,6 +103,37 @@ class UserDataService
             //echo $stmt->affected_rows;
             return false;
         }
+    }
+    
+    public function checkUsername($name)
+    {
+        $db = new Database();
+        
+        $sql_query = "SELECT * FROM USER WHERE USERNAME = ?";
+        
+        $stmt = $db->getConn()->prepare($sql_query);
+        
+        if(!$stmt)
+        {
+            echo "Error preparing";
+            exit;
+        }
+        
+        $stmt->bind_param("s", $name);
+        
+        $stmt->execute();
+        
+        $stmt->store_result();
+        
+        
+        if($stmt->affected_rows()>0){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
     
 }

@@ -14,13 +14,11 @@ $u = new User(0, "", "", "", $username, $password, 0);
 
 if($username == NULL || trim($username) == "")
 {
-    $message = "Username required";
-    include "_error.php";
+    include "../View/_error.php";
 }
 elseif($password == NULL || trim($password) == "")
 {
-    $message = "Password required";
-    include "_error.php";
+    include "../View/_error.php";
 }
 else 
 {

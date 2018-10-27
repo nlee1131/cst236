@@ -15,7 +15,7 @@
             <div class="container"><a class="navbar-brand" id="title" href="http://localhost:8888/236Main/View/index.php">Company Name</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#">First Item</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="http://localhost:8888/236Main/View/displayProducts.php">Products</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
                     </ul>
                     <form target="_self" class="form-inline mr-auto" action="../Controller/SearchController.php" method="post">

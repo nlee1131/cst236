@@ -7,6 +7,24 @@ error_reporting(E_ALL);
 
 class ProductBusinessService
 {
+    function search($term) {
+        $service = new ProductDataService();
+        
+        $products = Array();
+        
+        $products = $service->readProducts($term);
+        
+        return $products;
+    }
     
+    function findAll() {
+        $service = new ProductDataService();
+        
+        $products = Array();
+        
+        $products = $service->readAllProducts();
+        
+        return $products;
+    }
 }
 

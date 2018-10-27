@@ -48,79 +48,7 @@ class Database
             return $this->conn;
     }
 
-//     // Register
-//     public function createUser(User $u)
-//     {
-//         $sql_query = $this->conn->prepare("INSERT INTO USER (FIRSTNAME, LASTNAME, EMAIL, USERNAME, PASSWORD, AGE) VALUES  (?, ?, ?, ?, ?, ?)");
 
-
-//         if(!$sql_query)
-//         {
-//             echo "Error preparing";
-//             exit;
-//         }
-        
-        
-//         $fn = $u->getFirstName();
-//         $ln = $u->getLastName();
-//         $e = $u->getEmail();
-//         $us = $u->getUsername();
-//         $p = $u->getPassword();
-//         $a = $u->getAge();
-        
-//         $sql_query->bind_param("ssssss", $fn, $ln, $e, $us, $p, $a);
-        
-//         $sql_query->execute();
-        
-//         if ($sql_query->affected_rows > 0) {
-//             //echo "You are now registered.";
-//             return true;
-//         } else {
-//             echo "Error entering user info";
-//             return false;
-//         }
-//     }
-
-//     // Login
-//     public function readUser(User $u)
-//     {
-//         $sql_query = "SELECT ID, USERNAME, PASSWORD FROM USER WHERE USERNAME = ? AND PASSWORD = ?";
-        
-//         $stmt = $this->conn->prepare($sql_query);
-        
-//         if(!$stmt)
-//         {
-//             echo "Error preparing";
-//             exit;
-//         }
-        
-//         $us = $u->getUsername();
-//         $p = $u->getPassword();
-        
-//         $stmt->bind_param("ss", $us, $p);
-        
-//         $stmt->execute();
-        
-//         $stmt->store_result();
-        
-//         if ($this->conn->error) {
-//             //echo "Connection failed";
-//             return false;
-//         } elseif ($stmt->affected_rows == 1) {
-//             //echo "Login Successful";
-//             return true;
-//         } elseif ($stmt->affected_rows == 0) {
-//             //echo "User does not exist";
-//             return false;
-//         } elseif ($stmt->affected_rows > 1) {
-//             //echo "More than one user registered";
-//             return false;
-//         } else {
-//             //echo "Login failed <br>";
-//             //echo $stmt->affected_rows;
-//             return false;
-//         }
-//     }
 }
 
 ?>

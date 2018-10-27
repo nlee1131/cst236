@@ -5,19 +5,17 @@ error_reporting(E_ALL);
 
 require_once '../Autoloader.php';
 
-$search = $_POST["search"];
-
 $service = new ProductBusinessService();
 
 $products = Array();
 
-$products = $service->search($search);
+$products = $service->findAll();
 
 if($products)
 {
     include '../View/displayProducts.php';
 }
-else 
+else
 {
     include '../View/_error.php';
 }
