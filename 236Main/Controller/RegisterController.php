@@ -17,7 +17,7 @@ $age = $_POST["age"];
 
 $hashed = password_hash($password, PASSWORD_DEFAULT);
 
-$u = new User(0, $firstName, $lastName, $email, $username, $hashed, $age);
+$u = new User(0, $firstName, $lastName, $email, $username, $hashed, $age, 0);
 
 if($firstName == NULL || trim($firstName) == "")
 {

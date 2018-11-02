@@ -1,26 +1,44 @@
 <?php
 session_start();
-include 'navbar.php';
+print_r(session_id());
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 
-<!-- <ul> -->
-<!--     <li><a href="index.php">Home</a></li> -->
-    <?php
-//     if(isset($_SESSION["principle"])==false || $_SESSION["principle"]==null || $_SESSION["principle"]==false){
-//         ?>
-<!--         <li><a href="login.php">Login</a></li> -->
-<!--         <li><a href="register.php">Register</a></li> -->
 
-        <?php
-//         }
-//     else {
-        ?><!--  
-<!--         <li><a href="jobCategories.php">Job Categories</a></li> -->
-<!--         <li><a href="jobListPage.php">Job List</a></li> -->
-<!--         <li><a href="watchList.php">Watch List</a></li> -->
-<!--         <li><a href="logout.php">Logout</a></li> -->
-        <?php
-//     }
-//     ?>
-<!-- </ul> -->
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="../assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="../assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="../assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
 
+
+<?php
+
+print_r($_SESSION);
+echo session_status();
+//echo isset($_SESSION["userID"]);
+
+if(isset($_SESSION["userID"])==false || $_SESSION["userID"]==null || $_SESSION["userID"]==false)
+{
+	//echo $_SESSION["userID"];
+	include 'navbarNoLogin.php';
+}
+else
+{
+	if($_SESSION["adminCode"]==1 && $_SESSION["adminCode"] != null)
+	{
+		include 'navbarAdmin.php';
+	}
+	else
+	{
+		include 'navbarLoggedIn.php';
+	}
+}
+?>

@@ -3,8 +3,6 @@ include '_header.php';
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-echo "getcwd = : " . getcwd() . "<br>";
-echo "__DIR__ = : " . __DIR__ . "<br>";
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +18,7 @@ echo "__DIR__ = : " . __DIR__ . "<br>";
     <script type="text/javascript">
     	function checkAvailability(){
     		jQuery.ajax({
-    			url: "../Service/Business/checkUsername.php",
+    			url: "../Controller/UsernameController.php",
     			data:'username='+$("#username").val(),
     			type: "POST",
     			success:function(data){

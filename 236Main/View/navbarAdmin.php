@@ -10,36 +10,20 @@
 </head> -->
 
 <body>
-    <div>
-        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-            <div class="container"><a class="navbar-brand" id="title" href="http://localhost:8888/236Main/View/index.php">Company Name</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <?php
-                        if(!isset($_SESSION["userID"])==false || $_SESSION["userID"]==null){
-                    ?>
-                    <ul class="nav navbar-nav mr-auto">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
+        <div class="container"><a class="navbar-brand" id="title" href="http://localhost:8888/236Main/View/index.php">Company Name</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
                         <li class="nav-item" role="presentation"><a class="nav-link" href="http://localhost:8888/236Main/View/displayProducts.php">Products</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
                     </ul>
                     <form target="_self" class="form-inline mr-auto" action="../Controller/SearchController.php" method="post">
                         <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input type="search" name="search" class="form-control search-field" id="search-field" /></div>
                     </form>
-                    <?php } 
-                    else {
-                    ?>
-                    <span class="navbar-text actions" id="navaction"> <a href="http://localhost:8888/236Main/View/login.php" class="login">Log In</a><a class="btn btn-light action-button" role="button" href="http://localhost:8888/236Main/View/register.php">Sign Up</a></span>
-                    <?php } ?>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12"></div>
-            </div>
+                    <a class="btn btn-light action-button" role="button" href="http://localhost:8888/236Main/View/logout.php">Action </a></div>
         </div>
-    </div>
+    </nav>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

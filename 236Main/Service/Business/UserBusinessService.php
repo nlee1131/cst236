@@ -22,12 +22,23 @@ class UserBusinessService
 {
     public function login(User $u) {
         $service = new UserDataService();
+        $p = $u->getPassword();
         
-        if($service->readUser($u))
+        $user = $service->readUser($u);
+        $password = $user->getPassword();
+
+        if($user)
         {
-            return true;
+            if(password_verify($p, $password))
+            {
+                return $user;
+            }
+            else
+            {
+                return false;
+            }
         }
-        else 
+        else
         {
             return false;
         }
@@ -46,5 +57,21 @@ class UserBusinessService
             return false;
         }
     }
+
+    public function checkUsername($name)
+    {
+        $service = new UserDataService();
+
+        if($service->checkUsername($name))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    
 }
 

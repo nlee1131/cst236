@@ -9,7 +9,9 @@
 
 // echo "======================<br>";
 
+
 require_once '../Autoloader.php';
+
 
 
 ini_set('display_errors', 1);
@@ -49,7 +51,7 @@ class UserDataService
             //echo "You are now registered.";
             return true;
         } else {
-            echo "Error entering user info";
+            //echo "Error entering user info";
             return false;
         }
     }
@@ -59,7 +61,7 @@ class UserDataService
     {
         $db = new Database();
         
-        $sql_query = "SELECT ID, USERNAME, PASSWORD FROM USER WHERE USERNAME = ?";
+        $sql_query = "SELECT * FROM USER WHERE USERNAME = ?";
         
         $stmt = $db->getConn()->prepare($sql_query);
         
@@ -70,7 +72,7 @@ class UserDataService
         }
         
         $us = $u->getUsername();
-        $p = $u->getPassword();
+        
         
         $stmt->bind_param("s", $us);
         
@@ -78,31 +80,13 @@ class UserDataService
         
         $stmt->store_result();
         
-        $stmt->bind_result($col1, $col2, $col3);
+        $stmt->bind_result($id, $first, $last, $email, $user, $pass, $age, $admin);
         
         $stmt->fetch();
-        
-        if ($db->getConn()->error) {
-            //echo "Connection failed";
-            return false;
-        } elseif ($stmt->affected_rows == 1) {
-            if(password_verify($p, $col3)){
-                $_SESSION["userID"] = $col1;
-                //echo $_SESSION["userID"];
-            //echo "Login Successful";
-                return true;
-            }
-        } elseif ($stmt->affected_rows == 0) {
-            //echo "User does not exist";
-            return false;
-        } elseif ($stmt->affected_rows > 1) {
-            //echo "More than one user registered";
-            return false;
-        } else {
-            //echo "Login failed <br>";
-            //echo $stmt->affected_rows;
-            return false;
-        }
+
+        $user = new User($id, $first, $last, $email, $user, $pass, $age, $admin);
+
+        return $user;  
     }
     
     public function checkUsername($name)
@@ -125,8 +109,10 @@ class UserDataService
         
         $stmt->store_result();
         
+        $rows = $stmt->num_rows;
         
-        if($stmt->affected_rows()>0){
+        if($rows>0)
+        {
             return true;
         }
         else

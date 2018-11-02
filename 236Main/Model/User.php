@@ -10,9 +10,10 @@ class User
     private $username;
     private $password;
     private $age;
+    private $admin;
     
     
-    function __construct($id, $first, $last, $e, $user, $pass, $a)
+    function __construct($id, $first, $last, $e, $user, $pass, $a, $ad)
     {
         $this->id = $id;
         $this->firstName = $first;
@@ -21,6 +22,7 @@ class User
         $this->username = $user;
         $this->password = $pass;
         $this->age = $a;
+        $this->admin = $ad;
     }
     /**
      * @return mixed
@@ -79,6 +81,14 @@ class User
     }
 
     /**
+     * @return mixed
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
      * @param mixed $id
      */
     public function setId($id)
@@ -132,6 +142,14 @@ class User
     public function setAge($age)
     {
         $this->age = $age;
+    }
+
+    /**
+     * @param mixed $age
+     */
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
     }
 
     

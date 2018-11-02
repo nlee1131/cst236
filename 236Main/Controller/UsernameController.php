@@ -2,7 +2,7 @@
 
 
 
-require_once '../../Autoloader.php';
+require_once '../Autoloader.php';
 
 
 ini_set('display_errors', 1);
@@ -13,7 +13,7 @@ $user = $_POST["username"];
 
 
 if(!empty($user)){
-    $service = new UserDataService();
+    $service = new UserBusinessService();
     
     $result = $service->checkUsername($user);
     

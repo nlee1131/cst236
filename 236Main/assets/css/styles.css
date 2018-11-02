@@ -5,3 +5,8 @@
 body {
 	background: #f1f7fc;
 }
+
+#navaction {
+	margin-right: 50%;
+	padding-right: 150px;
+}

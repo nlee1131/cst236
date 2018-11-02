@@ -1,5 +1,9 @@
 <?php
 
+//session_start();
+
+echo session_id();
+
 require_once '../Autoloader.php';
 
 ini_set('display_errors', 1);
@@ -10,7 +14,7 @@ error_reporting(E_ALL);
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-$u = new User(0, "", "", "", $username, $password, 0);
+$u = new User(0, "", "", "", $username, $password, 0, 0);
 
 if($username == NULL || trim($username) == "")
 {
@@ -23,13 +27,22 @@ elseif($password == NULL || trim($password) == "")
 else 
 {
     $service = new UserBusinessService();
-    
-    if($service->login($u))
+
+    $result = $service->login($u);
+    //print_r($result);
+    if($result)
     {
+        $_SESSION["userID"] = $result->getId();
+        $_SESSION["adminCode"] = $result->getAdmin();
+        //print_r(session_id());
+        print_r($_SESSION);
+        session_commit();
         include "../View/loginSuccess.php";
     }
     else 
     {
+        $_SESSION["userID"] = null;
+        $_SESSION["adminCode"] = null;
         include "../View/loginFail.php";
     }
 }
