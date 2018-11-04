@@ -1,5 +1,6 @@
 <?php
-include '_header.php';
+//include '_header.php';
+require_once '_header.php';
 ?>
 <!DOCTYPE html>
 <html>

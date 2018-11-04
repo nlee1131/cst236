@@ -1,8 +1,9 @@
 <?php
 
 //session_start();
+require_once '../View/_header.php';
 
-echo session_id();
+//echo session_id();
 
 require_once '../Autoloader.php';
 
@@ -36,7 +37,7 @@ else
         $_SESSION["adminCode"] = $result->getAdmin();
         //print_r(session_id());
         print_r($_SESSION);
-        session_commit();
+        //session_commit();
         include "../View/loginSuccess.php";
     }
     else 

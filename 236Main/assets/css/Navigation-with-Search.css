@@ -5,8 +5,8 @@
 
 .navigation-clean-search .form-inline .search-field {
   background: none;
-  border: none;
-  border-bottom: 1px solid transparent;
+  border: 1px solid #ccc;
+  /*border-bottom: 1px solid transparent;*/
   border-radius: 0;
   color: #ccc;
   box-shadow: none;

@@ -121,6 +121,65 @@ class UserDataService
         }
         
     }
+
+    public function updateUser(User $u)
+    {
+        $db = new Database();
+
+        # update sql query for update
+        $sql_query = "UPDATE USER SET FIRSTNAME = ?, LASTNAME = ?, EMAIL = ?, USERNAME = ?, PASSWORD = ?, AGE = ?, ADMIN = ? WHERE ID = ?";
+
+        $stmt = $db->getConn()->prepare($sql_query);
+
+        if(!$stmt)
+        {
+            echo "Error preparing";
+            exit;
+        }
+
+        $id = $u->getId();
+        $fn = $u->getFirstName();
+        $ln = $u->getLastName();
+        $e = $u->getEmail();
+        $us = $u->getUsername();
+        $p = $u->getPassword();
+        $a = $u->getAge();
+        $ad = $u->getAdmin();
+
+        $stmt->bind_param("sssssiii", $fn, $ln, $e, $us, $p, $a, $ad, $id);
+        
+        $stmt->execute();
+
+        $stmt->store_result();
+
+        return $stmt->affected_rows;
+    }
+
+    public function deleteUser(User $u)
+    {
+        $db = new Database();
+
+        # update sql query for delete
+        $sql_query = "DELETE FROM USER WHERE ID = ?";
+
+        $stmt = $db->getConn()->prepare($sql_query);
+
+        if(!$stmt)
+        {
+            echo "Error preparing";
+            exit;
+        }
+
+        $id = $u->getId();
+
+        $stmt->bind_param("i", $id);
+        
+        $stmt->execute();
+
+        $stmt->store_result();
+
+        return $stmt->affected_rows;
+    }
     
 }
 

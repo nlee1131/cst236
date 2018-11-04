@@ -18,8 +18,8 @@ require_once '_header.php';
     <div class="highlight-blue">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center">Error</h2>
-                <p class="text-center">An error has occurred. Please try again at a later time.<br>If you recieve this message multiple times, please contact a system administrator.</p>
+                <h2 class="text-center">Success</h2>
+                <p class="text-center">Operation completed successfully.</p>
             </div>
         </div>
     </div>

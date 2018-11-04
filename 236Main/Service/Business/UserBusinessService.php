@@ -72,6 +72,42 @@ class UserBusinessService
         }
     }
 
+    public function updateUser(User $u)
+    {
+        $service = new UserDataService();
+
+        $result = $service->updateUser($u);
+
+        if ($result == 1) 
+        {
+            $response = true;
+        }
+        else
+        {
+            $response = false;
+        }
+
+        return $response;
+    }
+
+    public function removeUser(User $u)
+    {
+        $service = new UserDataService();
+
+        $result = $service->deleteUser($u);
+
+        if ($result == 1) 
+        {
+            $response = true;
+        }
+        else
+        {
+            $response = false;
+        }
+
+        return $response;
+    }
+
     
 }
 

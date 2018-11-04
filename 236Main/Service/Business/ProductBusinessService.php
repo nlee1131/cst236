@@ -26,5 +26,59 @@ class ProductBusinessService
         
         return $products;
     }
+
+    function addProduct(Product $p)
+    {
+        $service = new ProductDataService();
+
+        $result = $service->createProduct($p);
+
+        if ($result == 1) 
+        {
+            $response = true;
+        }
+        else
+        {
+            $response = false;
+        }
+
+        return $response;
+    }
+
+    function updateProduct(Product $p)
+    {
+        $service = new ProductDataService();
+
+        $result = $service->updateProduct($p);
+
+        if ($result == 1) 
+        {
+            $response = true;
+        }
+        else
+        {
+            $response = false;
+        }
+
+        return $response;
+    }
+
+    function removeProduct(Product $p)
+    {
+        $service = new ProductDataService();
+
+        $result = $service->deleteProduct($p);
+
+        if ($result == 1) 
+        {
+            $response = true;
+        }
+        else
+        {
+            $response = false;
+        }
+
+        return $response;
+    }
 }
 

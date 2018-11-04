@@ -1,6 +1,6 @@
 <?php
 session_start();
-print_r(session_id());
+//print_r(session_id());
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -15,14 +15,15 @@ error_reporting(E_ALL);
     <link rel="stylesheet" href="../assets/css/Header-Dark.css">
     <link rel="stylesheet" href="../assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="../assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="../assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 
 
 <?php
 
-print_r($_SESSION);
-echo session_status();
+//print_r($_SESSION);
+//echo session_status();
 //echo isset($_SESSION["userID"]);
 
 if(isset($_SESSION["userID"])==false || $_SESSION["userID"]==null || $_SESSION["userID"]==false)
