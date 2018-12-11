@@ -11,6 +11,7 @@ require_once '_header.php';
     <title>Product</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="../assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 

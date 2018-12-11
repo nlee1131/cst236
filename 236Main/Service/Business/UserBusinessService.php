@@ -11,9 +11,9 @@
 
 require_once '../Autoloader.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 
 
@@ -108,6 +108,71 @@ class UserBusinessService
         return $response;
     }
 
+    public function addAddress(Address $a)
+    {
+        $service = new UserDataService();
+
+        $result = $service->createAddress($a);
+
+        if ($result == 1) 
+        {
+            $response = true;
+        }
+        else
+        {
+            $response = false;
+        }
+
+        return $response;
+    }
+
+    public function addCreditCard(CreditCard $c)
+    {
+        $service = new UserDataService();
+
+        $result = $service->createCreditCard($c);
+
+        if ($result == 1) 
+        {
+            $response = true;
+        }
+        else
+        {
+            $response = false;
+        }
+
+        return $response;
+    }
+
+    public function getAllCreditCards(int $id)
+    {
+        $service = new UserDataService();
+
+        $result = $service->readAllCreditCards($id);
+
+        //$cards = json_encode($result);
+
+        return $result;
+    }
+
+    public function getAllAddresses(int $id)
+    {
+        $service = new UserDataService();
+
+        $result = $service->readAllAddresses($id);
+
+        //$addrs = json_encode($result);
+
+        return $result;
+    }
+
     
 }
+
+
+
+
+
+
+
 

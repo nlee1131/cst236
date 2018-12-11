@@ -1,15 +1,15 @@
 <?php
 
-//session_start();
-require_once '../View/_header.php';
+session_start();
+//require_once '../View/_header.php';
 
 //echo session_id();
 
 require_once '../Autoloader.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 
 $username = $_POST["username"];
@@ -36,7 +36,7 @@ else
         $_SESSION["userID"] = $result->getId();
         $_SESSION["adminCode"] = $result->getAdmin();
         //print_r(session_id());
-        print_r($_SESSION);
+        //print_r($_SESSION);
         //session_commit();
         include "../View/loginSuccess.php";
     }

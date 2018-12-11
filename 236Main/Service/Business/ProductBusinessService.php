@@ -1,9 +1,9 @@
 <?php
 require_once '../Autoloader.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 class ProductBusinessService
 {
@@ -25,6 +25,15 @@ class ProductBusinessService
         $products = $service->readAllProducts();
         
         return $products;
+    }
+
+    function findById($id)
+    {
+        $service = new ProductDataService();
+
+        $result = $service->findById($id);
+
+        return $result;
     }
 
     function addProduct(Product $p)

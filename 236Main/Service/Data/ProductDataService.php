@@ -1,9 +1,9 @@
 <?php
 require_once '../Autoloader.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 class ProductDataService
 {
@@ -12,7 +12,7 @@ class ProductDataService
         
         $search = '%' . $name . '%';
 
-        $sql_query = "SELECT NAME, DESCRIPTION, PRICE FROM PRODUCT WHERE NAME LIKE ?";
+        $sql_query = "SELECT ID, NAME, IMAGE, DESCRIPTION, PRICE FROM PRODUCT WHERE NAME LIKE ?";
         $stmt = $db->getConn()->prepare($sql_query);
         
         if(!$stmt)
@@ -29,15 +29,48 @@ class ProductDataService
         
         $product_array = Array();
 
-        $stmt->bind_result($n, $d, $p);
+        $stmt->bind_result($id, $n, $im, $d, $p);
         
         while($stmt->fetch())
         {
-            $product = new Product(NULL, $n, NULL, $d, $p);
+            $product = new Product($id, $n, $im, $d, $p);
             array_push($product_array, $product);
         }
         
         return $product_array;
+    }
+
+    public function findById($id) {
+        $db = new Database();
+
+        $sql_query = "SELECT ID, NAME, IMAGE, DESCRIPTION, PRICE FROM PRODUCT WHERE ID = ?";
+
+        $stmt = $db->getConn()->prepare($sql_query);
+        
+        if(!$stmt)
+        {
+            echo "Error preparing";
+            exit;
+        }
+        
+        $stmt->bind_param('i', $id);
+        
+        $stmt->execute();
+        
+        $stmt->store_result();
+
+        $stmt->bind_result($id, $n, $im, $d, $p);
+
+        $stmt->fetch();
+
+        $product = new Product($id, $n, $im, $d, $p);
+
+        // echo "<pre>";
+        // print_r($product);
+        // echo "</pre>";
+
+        return $product;
+
     }
     
     public function readAllProducts() {

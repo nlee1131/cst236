@@ -20,7 +20,12 @@
                         <!-- <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"></a>
                             <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#"></a><a class="dropdown-item" role="presentation" href="#"></a><a class="dropdown-item" role="presentation" href="#"></a></div>
                         </li> -->
-                    </ul><span class="navbar-text actions"> <a href="http://localhost:8888/236Main/View/login.php" class="login">Log In</a><a class="btn btn-light action-button" role="button" href="http://localhost:8888/236Main/View/register.php">Sign Up</a></span></div>
+                    </ul>
+                    <span class="navbar-text actions"> 
+                        <a href="http://localhost:8888/236Main/View/login.php" class="login">Log In</a>
+                        <a class="btn btn-light action-button" role="button" href="http://localhost:8888/236Main/View/register.php">Sign Up</a>
+                    </span>
+                </div>
             </div>
         </nav>
     </div>

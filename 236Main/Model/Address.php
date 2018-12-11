@@ -1,7 +1,7 @@
 <?php
 
 
-class Address
+class Address implements \JsonSerializable
 {
     private $id;
     private $userID;
@@ -10,8 +10,26 @@ class Address
     private $city;
     private $state;
     private $postalCode;
+    private $billing;
+
     
-    function __construct(){}
+    
+    public function __construct($id, $userID, $addr1, $addr2, $city, $state, $postalCode, $billing)
+    {
+        $this->id = $id;
+        $this->userID = $userID;
+        $this->addr1 = $addr1;
+        $this->addr2 = $addr2;
+        $this->city = $city;
+        $this->state = $state;
+        $this->postalCode = $postalCode;
+        $this->billing = $billing;
+    }
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
+    }
     
     /**
      * @return mixed
@@ -69,6 +87,11 @@ class Address
         return $this->postalCode;
     }
 
+    public function getBilling()
+    {
+        return $this->billing;
+    }
+
     /**
      * @param mixed $id
      */
@@ -123,6 +146,11 @@ class Address
     public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
+    }
+
+    public function setBilling($billing)
+    {
+        $this->billing = $billing;
     }
 
     

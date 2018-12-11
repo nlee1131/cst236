@@ -3,9 +3,9 @@ require_once '../View/_header.php';
 
 require_once '../Autoloader.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 $operation = $_POST["operation"];
 $id = $_POST["id"];
@@ -60,5 +60,9 @@ elseif ($operation == 3)
 	{
 		require_once '../View/_error.php';
 	}
+}
+else
+{
+	require_once '../View/_error.php';
 }
 ?>

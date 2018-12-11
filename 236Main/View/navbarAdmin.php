@@ -18,6 +18,7 @@
                         <li class="nav-item" role="presentation"><a class="nav-link" style="color:#fff" href="http://localhost:8888/236Main/View/displayProducts.php">Products</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" style="color:#fff" href="http://localhost:8888/236Main/View/productAdmin.php">Product Admin</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" style="color:#fff" href="http://localhost:8888/236Main/View/userAdmin.php">User Admin</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" style="color:#fff" href="http://localhost:8888/236Main/View/OrderData.php">Order Data</a></li>
                     </ul>
                     <form target="_self" class="form-inline mr-auto" action="../Controller/SearchController.php" method="post">
                         <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input type="search" name="search" class="form-control search-field" id="search-field" /></div>
