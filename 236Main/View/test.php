@@ -12,7 +12,7 @@ require_once '../Autoloader.php';
 	<title></title>
 </head>
 <body>
-<form action="../Controller/CheckoutAddrController.php">
+<form action="../Controller/OrderDataController.php">
 	<input type="submit" name="submit" value="Submit">
 </form>
 </form>

@@ -13,7 +13,7 @@ $result = $service->getOrderData();
 
 $result = json_encode($result);
 
-//print_r($result);
+print $result;
 
 return $result;
 

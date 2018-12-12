@@ -17,7 +17,7 @@ require_once '_header.php';
         <form method="post" action="../Controller/AddressController.php">
             <h2 class="text-center">Address</h2>
             <div class="form-group"><input class="form-control" type="text" name="addr1" required="" placeholder="Address Line 1" pattern=".{0,50}"></div>
-            <div class="form-group"><input class="form-control" type="email" name="addr2" placeholder="Address Line 2" pattern=".{0,50}"></div>
+            <div class="form-group"><input class="form-control" type="text" name="addr2" placeholder="Address Line 2" pattern=".{0,50}"></div>
             <div class="form-group"><input class="form-control" type="text" required="" name="city" placeholder="City" pattern=".{3,50}"></div>
             <div class="form-group"><input class="form-control" type="text" required="" name="state" placeholder="State" pattern=".{5,50}"></div>
             <div class="form-group"><input class="form-control" type="number" required="" name="postal" placeholder="Postal Code"></div>
